@@ -190,7 +190,8 @@ int main()
 	int weightInputed = 0;
 	int hideWarnings = 0;
 
-	char input[20];
+	int inputSize = 20;
+	char input[inputSize];
 
 	ClearScreen();
 	PrintTitle();
@@ -212,7 +213,7 @@ int main()
 		printf(": ");
 		scanf("%s", input);
 
-		for (int i = 0; i < SAMPLESIZE; i++) input[i] = tolower(input[i]);
+		for (int i = 0; i < inputSize; i++) input[i] = tolower(input[i]);
 
 		if (strcmp(input, SETVALUES) == 0)
 		{
@@ -303,11 +304,20 @@ int main()
 
 			printf ("Type new sample size...\n");
 			printf(" > ");
-			scanf("%i", &SAMPLESIZE);
- 			SetNewArraySize(&values, SAMPLESIZE);
- 			SetNewArraySize(&weights, SAMPLESIZE);
+			int newSampleSize = 0;
+			scanf("%i", &newSampleSize);
 
- 			printf("\n< SAMPLE SIZE: %i >\n", SAMPLESIZE);
+			if (newSampleSize > 1)
+			{
+ 				SetNewArraySize(&values, SAMPLESIZE);
+ 				SetNewArraySize(&weights, SAMPLESIZE);
+
+ 				printf("\n< SAMPLE SIZE: %i >\n", SAMPLESIZE);
+ 			}
+ 			else
+ 			{
+ 				printf("Sample size must be at least 2.\n");
+ 			}
 		}
 		else if (strcmp(input, RESETVALUES) == 0)
 		{
