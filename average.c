@@ -268,17 +268,6 @@ int main()
 			PrintCommands();
 
 			printf("< SAMPLE SIZE: %i >", SAMPLESIZE);
-			if (!firstRun)
-			{
-				printf("\nVALUES: ");
-				for (int i = 0; i < SAMPLESIZE; i++) printf("%.2f, ", values[i]);
-			}
-
-			if (weightInputed)
-			{
-				printf("\nWEIGHTS: ");
-				for (int i = 0; i < SAMPLESIZE; i++) printf("%.2f, ", weights[i]);
-			}
 
 			printf("\n");
 		}
@@ -356,6 +345,26 @@ int main()
 			}
 
 			fclose(valueFile);
+
+			firstRun = 0;
+		}
+		else if (strcmp(input, READWEIGHTSFROMFILE) == 0)
+		{
+			printf("\nType file name (including extension)...\nMake sure the file is in the same directory as .out file.\n > ");
+			scanf("%s", input);
+			
+			FILE *valueFile;
+			char fileInputs[SAMPLESIZE];
+
+			valueFile = fopen(input, "r");
+			for (int i = 0; i < SAMPLESIZE; i++)
+			{
+				fscanf(valueFile, "%f", &weights[i]);
+			}
+
+			fclose(valueFile);
+
+			weightInputed = 1;
 		}
 		else if (strcmp(input, EXIT) != 0)
 		{
