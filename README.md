@@ -1,4 +1,5 @@
 # Average Calculator
+![Main Menu](https://github.com/dino460/Average-Calculator/assets/61594035/f0efd931-c9a8-42d4-9e01-d252d2618b47.png)
 
 # Overview
 Average Calculator is a simple C program designed to calculate the average, weighed average, standard deviation, highest and lowest values of a set of user-inputed floating point numbers. 
